@@ -205,22 +205,18 @@ function Openlist(){
 function Shuffling() {
     if (isShuffled) {
       document.getElementById("Shuffle").style.background = `rgba(255, 255, 255, 0.201)`;
-      document.getElementById("Shuffle").style.color = "white";
     }
     else {
       document.getElementById("Shuffle").style.backgroundColor = "black";
-      document.getElementById("Shuffle").style.color = "white";
     }
     isShuffled = true;
   }
   function Looping() {
     if (isLooping) {
       document.getElementById("Loop").style.background = `rgba(255, 255, 255, 0.201)`;
-      document.getElementById("Loop").style.color = "white";
     }
     else {
       document.getElementById("Loop").style.backgroundColor = "black";
-      document.getElementById("Loop").style.color = "white";
     }
     isLooping = true;
   }
