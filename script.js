@@ -189,7 +189,7 @@ function PreviousSong() {
 let counter = 0;
 function Openlist(){
     if(counter == 0){
-        Container.style.transform = "translateX(850px)";
+        Container.style.transform = "translateX(900px)";
         MusicContainer.style.transform ="translateY(0px)";
         Open.style.transform = "rotate(180deg)";
         counter++;
