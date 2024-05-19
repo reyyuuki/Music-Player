@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e3198a8406.js" crossorigin="anonymous"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="Menu">
+        <button id="Open" class="Hover" onclick="Openlist()"><ion-icon
+                name="chevron-forward-outline"></ion-icon></button>
+    </div>
+    <div id="Music-List">
+        <div class="SongLists">
+            <div class="Box">
+                <div class="Music-icon"></div>
+            </div>
+            <div class="SongText">
+                <p class="Tittle">SongTittle</p>
+                <p class="Singer">SongArtist</p>
+            </div>
+            <div class="Duration-time">
+                <p class="Duration">00:00</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="circle">
+            <img src="" class="Photo">
+        </div>
+        <div class="Text">
+            <h1 id="Name"></h1>
+            <p id="Artist" style="font-size: 18px;">Artist</p>
+        </div>
+
+        <div id="Seek">
+            <div id="Progress-bar"></div>
+        </div>
+        <div class="time">
+            <p class="StartTime">00:00</p>
+            <p class="EndTime">03.09</p>
+        </div>
+        <audio src="" id="Song"></audio>
+        <div class="Controls">
+            <div class="Hover" id="Loop"onclick="Looping()"><i class="fa-solid fa-infinity"></i></div>
+            <div class="Left Hover" onclick="PreviousSong()"><i class="fa-solid fa-backward"></i></div>
+            <div class=" Music Play Hover" onclick="MusicPlay()"><i class="fa-solid fa-play"></i></div>
+            <div class=" Music Pause Hover" onclick="PauseMusic()"><i class="fa-solid fa-pause"></i></div>
+            <div class="Right Hover" onclick="NextSong()"><i class="fa-solid fa-forward"></i></div>
+            <div id="Shuffle" class="Hover"onclick="Shuffling()"><i class="fa-solid fa-random"></i></div>
+        </div>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
