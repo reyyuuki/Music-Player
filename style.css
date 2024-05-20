@@ -1,3 +1,4 @@
+
 * {
     padding: 0;
     margin: 0;
@@ -8,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgba(30, 229, 96, 0.555);
     background-attachment: fixed;
     background-repeat: repeat;
 }
@@ -19,7 +19,7 @@ body {
     flex-direction: column;
     height: 480px;
     width: 380px;
-    background-color: rgba(33, 29, 29, 0.112);
+    background-color: rgba(33, 29, 29, 0.097);
     box-shadow: 0px 0px 10px;
     border-radius: 10px;
     font-family: "Poppins";
@@ -43,7 +43,12 @@ body {
     font-family: "Poppins";
     transform: translateY(-700px);
     transition: 2s ease;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, 
+    rgba(0, 0, 0, 0.12) 0px 4px 6px, 
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, 
+    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    overflow-y: scroll;
 }
 
 .SongLists {
@@ -263,7 +268,6 @@ body {
     background-color: rgba(0, 0, 0, 0.333);
 }
 
-
 @keyframes bounce2 {
 
     0%,
@@ -302,5 +306,9 @@ body {
     .SongLists:active{
         transition: 1s ease;
         transform: scale(0.8);
+    }
+    .container{
+        width: 90%;
+        height:65%;
     }
 }
