@@ -22,7 +22,7 @@ const SongsLists = document.getElementsByClassName("SongLists");
 const Close = document.getElementById("Close");
 const Container = document.getElementsByClassName("container")[0];
 
-let index = 1;
+let index = 2;
 let isShuffled = false;
 let isLooping = false;
 let previous;
@@ -33,8 +33,16 @@ const Musiclist = [
         source: "Music.mp3",
         artistName: "Chris Grey",
         imgSource: "LetTheWorldBurn.jpg",
-        color: "orange",
-        duration: "2:43"
+        color: "orangered",
+        duration: "02:43"
+    },
+    {
+        name: "Mine",
+        source: "Mine.mp3",
+        artistName: "Bazzi",
+        imgSource: "Mine.png",
+        color: "lightblue",
+        duration: "02:14"
     },
     {
         name: "Lost On You",
@@ -42,37 +50,53 @@ const Musiclist = [
         artistName: "LP",
         imgSource: "Lost On You.jpg",
         color: "white",
-        duration: "4:30"
+        duration: "04:30"
     },
     {
         name: "Outrunning Karma",
         source: "Outrunning Karma.mp3",
         artistName: "Alec Benjamin",
         imgSource: "Outrunning Karma.jpg",
-        color: "black",
-        duration: "3:08"
+        color: "rgb(107, 11, 86)",
+        duration: "03:08"
+    },
+    {
+        name:"Beautiful",
+        source: "Beautiful.mp3",
+        artistName: "Bazzi",
+        imgSource: "Beautiful.jpg",
+        color: "yellow",
+        duration: "03:00"
     },
     {
         name: "Hurts So Good",
         source: "Hurts So Good.mp3",
         artistName: "John Mellencamp",
         imgSource: "Hurts So Good.jpg",
-        color: "brown",
-        duration: "3:28"
+        color: "lightgoldenrodyellow",
+        duration: "03:28"
+    },
+    {
+        name:"OverNight",
+        source: "Overnight.mp3",
+        artistName: "Queen Herby",
+        imgSource: "Overnight.png",
+        color: "darkmagenta",
+        duration: "02:15"
     },
     {
         name: "Runaway",
         source: "Runaway.mp3",
         artistName: "Aurora",
         imgSource: "Runaway.png",
-        color: "grey",
-        duration: "4:09"
+        color: "black",
+        duration: "04:09"
     }
 
 ]
 
 MusicContainer.innerHTML = "";
-MusicContainer.innerHTML = `<h1 style = "transform: translateY(-40px);font-size:36px; color:white;">Songs List</h1>`;
+MusicContainer.innerHTML = `<h1 style = "transform: translateY-0px);font-size:36px; color:white;">Songs List</h1>`;
 for(let i = 0; i < Musiclist.length; i++){
     MusicContainer.innerHTML += SongList.outerHTML;
 }
@@ -106,15 +130,9 @@ function fillElements(){
 }
 fillElements();
 function MusicPlay() {
-    Song.src = Musiclist[index].source;
-    Name.textContent = Musiclist[index].name;
-    Artist.textContent = Musiclist[index].artistName;
-    Photo.src = Musiclist[index].imgSource;
-    ProgressBar.style.backgroundColor = Musiclist[index].color;
-    document.body.style.backgroundImage = `url('${Musiclist[index].imgSource}')`;
-    document.body.style.backdropFilter = "blur(50px)";
-
+    fillElements();
     Song.play();
+    Container.style.backgroundColor = "rgba(33, 29, 29, 0.273)";
     setInterval(() => {
         var Minutes = parseInt(Song.currentTime / 60) % 60;
         var Seconds = parseInt(Song.currentTime % 60);
@@ -145,7 +163,6 @@ function MusicPlay() {
 
 Seek.onclick = function(e){
     Song.currentTime = parseInt((e.offsetX/Seek.offsetWidth)*Song.duration);
-    console.log(Song.currentTime);
 }
 function PauseMusic() {
     Song.pause();
@@ -176,20 +193,27 @@ function NextSong() {
 }
 function PreviousSong() {
     index--;
-    if (index < 0) {
-        index = Musiclist.length - 1;
+    if (isShuffled) {
+        index = Math.floor(Math.random() * Musiclist.length) + 1;
         Song.src = Musiclist[index].source;
         MusicPlay();
-    }
-    else {
-        Song.src = Musiclist[index].source;
-        MusicPlay();
-    }
+      }
+      else{
+        if (index < 0) {
+            index = Musiclist.length - 1;
+            Song.src = Musiclist[index].source;
+            MusicPlay();
+        }
+        else {
+            Song.src = Musiclist[index].source;
+            MusicPlay();
+        }
+      }
 }
 let counter = 0;
 function Openlist(){
     if(counter == 0){
-        Container.style.transform = "translateX(900px)";
+        Container.style.transform = "translateX(850px)";
         MusicContainer.style.transform ="translateY(0px)";
         Open.style.transform = "rotate(180deg)";
         counter++;
@@ -205,19 +229,23 @@ function Openlist(){
 function Shuffling() {
     if (isShuffled) {
       document.getElementById("Shuffle").style.background = `rgba(255, 255, 255, 0.201)`;
+      document.getElementById("Shuffle").style.color = "white";
     }
     else {
       document.getElementById("Shuffle").style.backgroundColor = "black";
+      document.getElementById("Shuffle").style.color = "white";
     }
-    isShuffled = true;
+    isShuffled = !isShuffled;
   }
   function Looping() {
     if (isLooping) {
       document.getElementById("Loop").style.background = `rgba(255, 255, 255, 0.201)`;
+      document.getElementById("Loop").style.color = "white";
     }
     else {
       document.getElementById("Loop").style.backgroundColor = "black";
+      document.getElementById("Loop").style.color = "white";
     }
-    isLooping = true;
+    isLooping = !isLooping;
   }
 
