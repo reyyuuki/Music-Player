@@ -268,33 +268,11 @@ body {
     background-color: rgba(0, 0, 0, 0.333);
 }
 
-@keyframes bounce2 {
-
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-30px);
-    }
-
-    60% {
-        transform: translateY(-15px);
-    }
-}
 
 @media only screen and (max-width:600px) {
     #Music-List {
         height: 80%;
         width: 80%;
-    }
-
-    .SongLists {
-        width: 110%;
     }
     .Menu {
         top: 0px;
@@ -308,7 +286,6 @@ body {
         transform: scale(0.8);
     }
     .container{
-        width: 90%;
-        height:60%;
+        scale: 0.8;
     }
 }
