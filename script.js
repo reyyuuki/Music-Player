@@ -61,7 +61,7 @@ const Musiclist = [
         duration: "03:08"
     },
     {
-        name:"Beautiful",
+        name: "Beautiful",
         source: "Beautiful.mp3",
         artistName: "Bazzi",
         imgSource: "Beautiful.jpg",
@@ -77,7 +77,7 @@ const Musiclist = [
         duration: "03:28"
     },
     {
-        name:"OverNight",
+        name: "OverNight",
         source: "Overnight.mp3",
         artistName: "Queen Herby",
         imgSource: "Overnight.png",
@@ -96,30 +96,31 @@ const Musiclist = [
 ]
 
 MusicContainer.innerHTML = "";
-MusicContainer.innerHTML = `<h1 style = "transform: translateY-0px);font-size:36px; color:white;">Songs List</h1>`;
-for(let i = 0; i < Musiclist.length; i++){
+MusicContainer.innerHTML = `<h1 style = "font-size:36px; color:white;">Songs List</h1>`;
+for (let i = 0; i < Musiclist.length; i++) {
     MusicContainer.innerHTML += SongList.outerHTML;
 }
 
- Open.addEventListener('click', () => {
-    for(var i = 0; i < Musiclist.length; i++) {
-    Tittle[i].textContent = Musiclist[i].name;
-    Singer[i].textContent = Musiclist[i].artistName;
-    Duration[i].textContent = Musiclist[i].duration;
-    Songimage[i].style.backgroundImage = `url('${Musiclist[i].imgSource}')`;
+Open.addEventListener('click', () => {
+    for (var i = 0; i < Musiclist.length; i++) {
+        Tittle[i].textContent = Musiclist[i].name;
+        Singer[i].textContent = Musiclist[i].artistName;
+        Duration[i].textContent = Musiclist[i].duration;
+        Songimage[i].style.backgroundImage = `url('${Musiclist[i].imgSource}')`;
     }
- });
-
- for(let i = 0; i < Musiclist.length; i++) {
-   
- SongsLists[i].addEventListener("click",() => {
-    index = i;
-    MusicPlay();
 });
 
- }
+for (let i = 0; i < Musiclist.length; i++) {
 
-function fillElements(){
+    SongsLists[i].addEventListener("click", () => {
+        index = i;
+        SongsLists[i].style.color = "white";
+        MusicPlay();
+    });
+
+}
+
+function fillElements() {
     Song.src = Musiclist[index].source;
     Name.textContent = Musiclist[index].name;
     Artist.textContent = Musiclist[index].artistName;
@@ -132,11 +133,11 @@ fillElements();
 function MusicPlay() {
     fillElements();
     Song.play();
-    Container.style.backgroundColor = "rgba(33, 29, 29, 0.273)";
+    Container.style.backgroundColor = "rgba(20, 18, 18, 0.216)";
     setInterval(() => {
         var Minutes = parseInt(Song.currentTime / 60) % 60;
         var Seconds = parseInt(Song.currentTime % 60);
-        let percentage = Math.floor((Song.currentTime / Song.duration)*100);
+        let percentage = Math.floor((Song.currentTime / Song.duration) * 100);
         ProgressBar.style.width = `${percentage + "%"}`;
         let formattedTime = `${(Minutes.toString().padStart(2, "0"))}:${Seconds.toString().padStart(2, "0")}`;
         StartTime.textContent = formattedTime;
@@ -154,31 +155,32 @@ function MusicPlay() {
         if (isLooping) {
             Song.currentTime = 0;
             Song.play();
-          }
-          else {
+        }
+        else {
             NextSong();
-          }
-    }); 
+        }
+    });
 }
 
-Seek.onclick = function(e){
-    Song.currentTime = parseInt((e.offsetX/Seek.offsetWidth)*Song.duration);
+Seek.onclick = function (e) {
+    Song.currentTime = parseInt((e.offsetX / Seek.offsetWidth) * Song.duration);
 }
 function PauseMusic() {
     Song.pause();
+    Container.style.backgroundColor = "rgba(33, 29, 29, 0.097)"
     Pause.style.display = "none";
     Play.style.display = "grid";
 }
 function NextSong() {
     if (isShuffled) {
         do {
-          index = Math.floor(Math.random() * Musiclist.length);
-          Song.src = Musiclist[index].source;
+            index = Math.floor(Math.random() * Musiclist.length);
+            Song.src = Musiclist[index].source;
         } while (index == previous)
         previous = index;
         MusicPlay();
-      }
-      else{
+    }
+    else {
         index++;
         if (index > Musiclist.length - 1) {
             index = 0;
@@ -189,7 +191,7 @@ function NextSong() {
             Song.src = Musiclist[index].source;
             MusicPlay();
         }
-      }
+    }
 }
 function PreviousSong() {
     index--;
@@ -197,8 +199,8 @@ function PreviousSong() {
         index = Math.floor(Math.random() * Musiclist.length) + 1;
         Song.src = Musiclist[index].source;
         MusicPlay();
-      }
-      else{
+    }
+    else {
         if (index < 0) {
             index = Musiclist.length - 1;
             Song.src = Musiclist[index].source;
@@ -208,44 +210,48 @@ function PreviousSong() {
             Song.src = Musiclist[index].source;
             MusicPlay();
         }
-      }
+    }
 }
 let counter = 0;
-function Openlist(){
-    if(counter == 0){
-        Container.style.transform = "translateX(850px)";
-        MusicContainer.style.transform ="translateY(0px)";
+function Openlist() {
+    if (counter == 0) {
+        Open.style.backgroundColor = "rgba(0, 0, 0, 0.333)";
+        Open.style.color = "white";
+        Container.style.transform = "translateX(950px)";
+        MusicContainer.style.transform = "translateY(0px)";
         Open.style.transform = "rotate(180deg)";
         counter++;
     }
-    else{
+    else {
+        Open.style.backgroundColor = "rgba(255, 255, 255, 0.201)";
+        Open.style.color = "black";
         Container.style.transform = "translateX(0px)";
-        MusicContainer.style.transform ="translateY(-700px)";
+        MusicContainer.style.transform = "translateY(-900px)";
         Open.style.transform = "rotate(0deg)";
         counter = 0;
     }
-   
+
 }
 function Shuffling() {
     if (isShuffled) {
-      document.getElementById("Shuffle").style.background = `rgba(255, 255, 255, 0.201)`;
-      document.getElementById("Shuffle").style.color = "white";
+        document.getElementById("Shuffle").style.background = `rgba(255, 255, 255, 0.201)`;
+        document.getElementById("Shuffle").style.color = "white";
     }
     else {
-      document.getElementById("Shuffle").style.backgroundColor = "black";
-      document.getElementById("Shuffle").style.color = "white";
+        document.getElementById("Shuffle").style.backgroundColor = "black";
+        document.getElementById("Shuffle").style.color = "white";
     }
     isShuffled = !isShuffled;
-  }
-  function Looping() {
+}
+function Looping() {
     if (isLooping) {
-      document.getElementById("Loop").style.background = `rgba(255, 255, 255, 0.201)`;
-      document.getElementById("Loop").style.color = "white";
+        document.getElementById("Loop").style.background = `rgba(255, 255, 255, 0.201)`;
+        document.getElementById("Loop").style.color = "white";
     }
     else {
-      document.getElementById("Loop").style.backgroundColor = "black";
-      document.getElementById("Loop").style.color = "white";
+        document.getElementById("Loop").style.backgroundColor = "black";
+        document.getElementById("Loop").style.color = "white";
     }
     isLooping = !isLooping;
-  }
+}
 
