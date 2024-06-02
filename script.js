@@ -114,7 +114,10 @@ for (let i = 0; i < Musiclist.length; i++) {
 
     SongsLists[i].addEventListener("click", () => {
         index = i;
-        SongsLists[i].style.color = "white";
+        for (let i = 0; i < Musiclist.length; i++) {
+            SongsLists[i].style.color = "black";
+        }
+        SongsLists[index].style.color = "white";
         MusicPlay();
     });
 
